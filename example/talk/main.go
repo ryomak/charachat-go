@@ -1,12 +1,3 @@
-# charachat-go
-## Description
-ChatGPTを使ったキャラクターなりきりチャットボットを作ることができるツールです。
-
-
-## example
-
-```go
-
 package main
 
 import (
@@ -41,7 +32,7 @@ func main() {
 		panic(err)
 	}
 
-	chat, err := charachat.NewCharachat("sk-xxxxxxxxxxxxx", personality)
+	chat, err := charachat.NewCharachat("sk-xxxxxxxxxxxxxx", personality)
 	if err != nil {
 		panic(err)
 	}
@@ -65,14 +56,3 @@ func main() {
 	}
 
 }
-
-```
-
-### output
-```     
-おじさん としてのbotが起動しました
-user>> こんにちは
-bot>> ヤッホー😝ryomakちゃん、こんにちは🌞💕おじさん、今日も元気いっぱいだよ～🏋️‍♀️💪元気に過ごしているかな？？😊😊
-user>> 休日はなにしているの？     
-bot>> ヤッホー😆ryomakちゃん、細かいこと気にするんだねえ😅おじさんの休日ねえ…うーん🤔と言いつつも、大体はごろごろしてるかなあ😂おじさんも年取るとなかなかハードに動けないんだよ、若いryomakちゃんにはまだ分からないことだろうけどさ😉😂それで、ryomakちゃんは？どんな休日を過ごしてるの？
-```
