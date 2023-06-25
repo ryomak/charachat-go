@@ -1,5 +1,5 @@
 name: Quality
-on: [pull_request]
+on: [pull_request,push]
 jobs:
   test:
     name: Test with Coverage

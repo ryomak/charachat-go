@@ -1,7 +1,9 @@
 # charachat-go
+
 [![GoReport](https://goreportcard.com/report/github.com/ryomak/charachat-go)](https://goreportcard.com/badge/github.com/ryomak/charachat-go)
 [![Coverage Status](https://coveralls.io/repos/github/ryomak/charachat-go/badge.svg?branch=main)](https://coveralls.io/github/ryomak/charachat-go?branch=main)
-[![GoDoc](https://godoc.org/github.com/ryomak/charachat-go?status.svg)](https://godoc.org/github.com/ryomak/charachat-go)
+[![GoDoc](https://godoc.org/github.com/ryomak/charachat-go?status.svg)](https://godoc.org/github.com/ryomak/charachat-go)  
+
 ChatGPTを使った「キャラクターになりきって会話するチャットボット」ツール
 
 
