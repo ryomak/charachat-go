@@ -1,10 +1,12 @@
 # charachat-go
-## Description
-ChatGPTを使ったキャラクターなりきりチャットボットを作ることができるツールです。
+[![GoReport](https://goreportcard.com/report/github.com/ryomak/charachat-go)](https://goreportcard.com/report/github.com/ryomak/charachat-go)
+[![Coverage Status](https://coveralls.io/repos/github/ryomak/charachat-go/badge.svg?branch=main)](https://coveralls.io/github/ryomak/charachat-go?branch=main)
+[![GoDoc](https://godoc.org/github.com/ryomak/charachat-go?status.svg)](https://godoc.org/github.com/ryomak/charachat-go)
+ChatGPTを使った「キャラクターになりきって会話するチャットボット」ツール
 
 
 ## example
-
+[ojichat](https://github.com/greymd/ojichat)を参考にキャラクターを作りました。
 ```go
 
 package main
