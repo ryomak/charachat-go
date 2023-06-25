@@ -1,4 +1,5 @@
 # charachat-go
+[![GoReport](https://goreportcard.com/report/github.com/ryomak/charachat-go)](https://goreportcard.com/report/github.com/ryomak/charachat-go)
 ## Description
 ChatGPTを使ったキャラクターなりきりチャットボットを作ることができるツールです。
 
