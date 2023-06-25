@@ -24,76 +24,12 @@ type Personality struct {
 	BehaviorExamples []string
 }
 
-func PersonalityBuilder() *Personality {
-	return &Personality{}
-}
-
-func (p *Personality) WithName(name string) *Personality {
-	p.Name = name
-	return p
-}
-
-func (p *Personality) WithMe(me string) *Personality {
-	p.Me = me
-	return p
-}
-
-func (p *Personality) WithUser(user string) *Personality {
-	p.User = user
-	return p
-}
-
-func (p *Personality) WithIsUserOverridable(isUserOverridable bool) *Personality {
-	p.IsUserOverridable = isUserOverridable
-	return p
-}
-
-func (p *Personality) WithUserCallingOut(userCallingOut string) *Personality {
-	p.UserCallingOut = userCallingOut
-	return p
-}
-
-func (p *Personality) WithConstraints(constraints []string) *Personality {
-	p.Constraints = constraints
-	return p
-}
-
-func (p *Personality) WithToneExamples(toneExamples []string) *Personality {
-	p.ToneExamples = toneExamples
-	return p
-}
-
-func (p *Personality) WithBehaviorExamples(behaviorExamples []string) *Personality {
-	p.BehaviorExamples = behaviorExamples
-	return p
-}
-
-func (p *Personality) Build() (*Personality, error) {
-	if p.Name == "" {
-		return nil, errors.New("name is required")
-	}
-	if p.Me == "" {
-		return nil, errors.New("me is required")
-	}
-	if p.User == "" {
-		return nil, errors.New("user is required")
-	}
-	if len(p.Constraints) == 0 {
-		return nil, errors.New("constraints is required")
-	}
-	if len(p.BehaviorExamples) == 0 {
-		return nil, errors.New("behaviorExamples is required")
-	}
-	return p, nil
-}
-
 func (p *Personality) SystemPrompt(userName string) string {
 	you := p.User
 	if userName != "" && p.IsUserOverridable {
 		you = userName + p.UserCallingOut
 	}
-	return fmt.Sprintf(`
-# 指示
+	return fmt.Sprintf(`# 指示
 あなたは%sのロールプレイを行います。
 以下の制約条件を厳密に守ってロールプレイしてください。
 
@@ -110,8 +46,7 @@ func (p *Personality) SystemPrompt(userName string) string {
 %s
 
 # %sの行動指針
-%s
-`,
+%s`,
 		p.Name,
 		p.Name,
 		p.Me,
@@ -131,4 +66,87 @@ func (p *Personality) promptList(s []string) string {
 		txt += fmt.Sprintf("- %s\n", v)
 	}
 	return txt
+}
+
+type personalityBuilder struct {
+	name              string
+	me                string
+	user              string
+	isUserOverridable bool
+	userCallingOut    string
+	constraints       []string
+	toneExamples      []string
+	behaviorExamples  []string
+}
+
+func PersonalityBuilder() *personalityBuilder {
+	return &personalityBuilder{}
+}
+
+func (p *personalityBuilder) WithName(name string) *personalityBuilder {
+	p.name = name
+	return p
+}
+
+func (p *personalityBuilder) WithMe(me string) *personalityBuilder {
+	p.me = me
+	return p
+}
+
+func (p *personalityBuilder) WithUser(user string) *personalityBuilder {
+	p.user = user
+	return p
+}
+
+func (p *personalityBuilder) WithIsUserOverridable(isUserOverridable bool) *personalityBuilder {
+	p.isUserOverridable = isUserOverridable
+	return p
+}
+
+func (p *personalityBuilder) WithUserCallingOut(userCallingOut string) *personalityBuilder {
+	p.userCallingOut = userCallingOut
+	return p
+}
+
+func (p *personalityBuilder) WithConstraints(constraints []string) *personalityBuilder {
+	p.constraints = constraints
+	return p
+}
+
+func (p *personalityBuilder) WithToneExamples(toneExamples []string) *personalityBuilder {
+	p.toneExamples = toneExamples
+	return p
+}
+
+func (p *personalityBuilder) WithBehaviorExamples(behaviorExamples []string) *personalityBuilder {
+	p.behaviorExamples = behaviorExamples
+	return p
+}
+
+func (p *personalityBuilder) Build() (*Personality, error) {
+	if p.name == "" {
+		return nil, errors.New("name is required")
+	}
+	if p.me == "" {
+		return nil, errors.New("me is required")
+	}
+	if p.user == "" {
+		return nil, errors.New("user is required")
+	}
+	if len(p.constraints) == 0 {
+		return nil, errors.New("constraints is required")
+	}
+	if len(p.behaviorExamples) == 0 {
+		return nil, errors.New("behaviorExamples is required")
+	}
+	return &Personality{
+		Name:              p.name,
+		Me:                p.me,
+		User:              p.user,
+		IsUserOverridable: p.isUserOverridable,
+		UserCallingOut:    p.userCallingOut,
+		Constraints:       p.constraints,
+		ToneExamples:      p.toneExamples,
+		BehaviorExamples:  p.behaviorExamples,
+	}, nil
 }
