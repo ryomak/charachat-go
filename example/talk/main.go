@@ -32,7 +32,7 @@ func main() {
 		panic(err)
 	}
 
-	chat, err := charachat.NewCharachat("sk-xxxxxxxxxxxxxx", personality)
+	chat, err := charachat.New("sk-xxxxxxxxxxxxxx", personality)
 	if err != nil {
 		panic(err)
 	}

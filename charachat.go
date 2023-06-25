@@ -16,7 +16,7 @@ type Charachat struct {
 	encoder         *tokenizer.Encoder
 }
 
-func NewCharachat(
+func New(
 	openAIKey string,
 	personality *Personality,
 ) (*Charachat, error) {
